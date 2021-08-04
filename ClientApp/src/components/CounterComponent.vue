@@ -2,7 +2,7 @@
   <div>
     <p class="my-3">
       Current count:
-      <strong>{{ currentCount }}</strong>
+      <strong>{{ counter.count }}</strong>
     </p>
     <button class="mr-2 btn btn-primary" @click.prevent="increment">Increment</button>
     <button class="btn btn-secondary" @click.prevent="reset">Reset</button>
@@ -10,15 +10,15 @@
 </template>
 
 <script setup lang="ts">
-    import { ref } from 'vue'
+import { useCounterStore } from '~/stores/counter'
 
-const currentCount = ref(0)
+const counter = useCounterStore()
 
-    const increment = (): void => {
-        currentCount.value++
+const increment = (): void => {
+  counter.count++
 }
 
-    const reset = (): void => {
-        currentCount.value = 0
+const reset = (): void => {
+  counter.reset()
 }
 </script>
